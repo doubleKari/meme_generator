@@ -10,7 +10,7 @@ const Meme = () => {
         <input type="text" className="inputs" placeholder="Bottom text" />
       </div>
 
-      <button className="block bg-gradient-to-r from-[#711F8D] to-[#A818DA] h-[45px] w-[230px] md:h-12 md:w-[660px] rounded-md">
+      <button className="block bg-gradient-to-r from-[#711F8D] to-[#A818DA] h-[50px] w-80 md:h-12 md:w-[660px] rounded-md">
         <img
           src={newMeme}
           alt="Button text"

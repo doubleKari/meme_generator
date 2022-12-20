@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .inputs{
-    @apply border rounded-md py-1 w-[230px] md:w-80 h-[45px] md:h-11 focus:outline-none px-3 block font-karla;
+    @apply border rounded-md py-1 w-80 md:w-80 h-[50px] md:h-11 focus:outline-none px-3 block font-karla;
 }
