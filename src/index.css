@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.inputs{
+    @apply border rounded-md py-1 w-[230px] md:w-96 h-[40px] md:h-11 focus:outline-none px-3 block;
+}
