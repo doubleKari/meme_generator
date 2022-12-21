@@ -7,7 +7,7 @@ function App() {
   return (
     <main className="w-full h-full">
       <Header />
-      <section className="mt-24 md:mt-36 w-full">
+      <section className="mt-28 md:mt-36 w-full mb-20">
         <Meme />
       </section>
     </main>
