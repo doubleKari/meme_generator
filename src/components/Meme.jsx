@@ -4,14 +4,23 @@ import memeData from "../memeData";
 import newMeme from "../assets/images/memeimage.png";
 
 const Meme = () => {
-  const [memeImage, setMemeImage] = useState(memeData.data.memes[0].url);
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "https://i.imgflip.com/30b1gx.jpg",
+  });
+
+  const [allMemeImages, setAllMemeImages] = useState(memeData);
 
   function getMemeImage() {
     const Meme =
-      memeData.data.memes[
-        Math.floor(Math.random() * memeData.data.memes.length)
+      allMemeImages.data.memes[
+        Math.floor(Math.random() * allMemeImages.data.memes.length)
       ];
-    setMemeImage(Meme.url);
+    setMeme({
+      ...meme,
+      randomImage: Meme.url,
+    });
   }
 
   return (
@@ -37,7 +46,7 @@ const Meme = () => {
 
       <div className="w-80 mx-auto rounded-sm sm:w-[660px]  sm:rounded-lg">
         <img
-          src={memeImage}
+          src={meme.randomImage}
           alt="Meme"
           className="w-full h-full object-cover object-center rounded-sm sm:rounded-lg"
         />
