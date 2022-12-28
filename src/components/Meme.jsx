@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import memeData from "../memeData";
 import newMeme from "../assets/images/memeimage.png";
 
 const Meme = () => {
+  const [allMemes, setAllMeme] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setAllMeme(data.data.memes));
+  }, []);
+
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
     randomImage: "https://i.imgflip.com/30b1gx.jpg",
   });
+
+  function getMemeImage() {
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
+    const url = allMemes[randomNumber].url;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      randomImage: url,
+    }));
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -19,20 +35,6 @@ const Meme = () => {
       };
     });
   };
-  const [allMemeImages, setAllMemeImages] = useState(memeData);
-
-  function getMemeImage() {
-    const Meme =
-      allMemeImages.data.memes[
-        Math.floor(Math.random() * allMemeImages.data.memes.length)
-      ];
-    setMeme({
-      ...meme,
-      randomImage: Meme.url,
-    });
-  }
-
-  console.log(meme);
 
   return (
     <main className="flex flex-col gap-10 relative">
@@ -69,7 +71,7 @@ const Meme = () => {
         </button>
       </div>
 
-      <div className="w-80 mx-auto rounded-sm sm:w-[660px]  sm:rounded-lg relative outline font-roboto text-3xl text-white font-bold">
+      <div className="w-80 mx-auto rounded-sm sm:w-[660px]  sm:rounded-lg relative outline font-roboto text-3xl sm:text-4xl text-white font-bold">
         <img
           src={meme.randomImage}
           alt="Meme"
